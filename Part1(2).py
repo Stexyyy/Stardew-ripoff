@@ -1,15 +1,15 @@
 import pygame #provides functions to help you with mulitmedia
 import sys#lets you mess with python runtime environment and variables/functions that interact with the interpreter!
-import settings
-from level import LevelClass
-self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+from settings import *
+from level import Level
 
 #----- Class Game ---------------------
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((800,800))
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
+        self.level = Level()
         
     def run(self):
         while True: #GAME LOOP!!!!------------------
@@ -17,8 +17,8 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit() #releases memory stuff pygame was holding onto lol
                     sys.exit() #actually exits python interpreter
-                    
                 dt = self.clock.tick()/1000 #handles FPS
+                self.level.run(dt)
                 pygame.display.update() #update is like flip, but we can update *portions* of the screen if we want!
 
 #END OF THE GAME LOOP!!!!--------------------------------------------
