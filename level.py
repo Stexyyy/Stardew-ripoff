@@ -18,7 +18,7 @@ class Level:
     
     
     def run(self, dt):
-        print("run game")
+        #print("run game")
         self.display_surface.fill('black')
         self.all_sprites.draw(self.display_surface) #a draw function from the group class
         self.all_sprites.update(dt) #another function from the group class
