@@ -17,9 +17,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit() #releases memory stuff pygame was holding onto lol
                     sys.exit() #actually exits python interpreter
-                dt = self.clock.tick()/1000 #handles FPS
-                self.level.run(dt)
-                pygame.display.update() #update is like flip, but we can update *portions* of the screen if we want!
+            dt = self.clock.tick()/1000 #handles FPS
+            self.level.run(dt)
+            pygame.display.update() #update is like flip, but we can update *portions* of the screen if we want!
 
 #END OF THE GAME LOOP!!!!--------------------------------------------
 
@@ -27,3 +27,4 @@ class Game:
 if __name__=='__main__':
     game = Game() #creates game object from class Game
     game.run() #(insert corny joke about forest running) (LMAO)
+
