@@ -6,7 +6,7 @@ class Level:
     def __init__(self):
         
         #gets a reference (address) to the currently set display surface
-        self.display_surface - pygame.display.get_surface()
+        self.display_surface = pygame.display.get_surface()
         
         #class "group" is part of pygame's sprite support. it is a class that manages a *list* of sprites.
         self.all_sprites = pygame.sprite.Group()
