@@ -11,13 +11,35 @@ class Player(pygame.sprite.Sprite): #this is a child class of pygame's sprite cl
         self.rect = self.image.get_rect(center = pos) #set the position to be the center of the rect
         
         #movement attributes
-        self.direction - pygame.mathVector2() 
+        self.direction = pygame.math.Vector2()
+        self.pos = pygame.math.Vector2(self.rect.center) #player x, y position
+        self.speed = 200
         
     def input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
-            print("up")
-        #obviously more directions will be put here
+            self.direction.y = -1
+        elif keys[pygame.K_DOWN]:
+            self.direction.y = 1
+        else:
+            self.direction.y = 0
+            
+        if keys[pygame.K_LEFT]:
+            self.direction.x = -1
+        elif keys[pygame.K_RIGHT]:
+            self.direction.x = 1
+        else:
+            self.direction.x = 0
+            
+        #print(self.direction)
+            
+    def move(self, dt):
+        if self.direction.magnitude() > 0: #can't normalize vectors with length of 0
+            self.direction = self.direction.normalize() #normalize the vector
+        print(self.direction)
+        self.pos += self.direction * self.speed * dt
+        self.rect.center = self.pos
     
     def update(self,dt):
         self.input()
+        self.move(dt)
